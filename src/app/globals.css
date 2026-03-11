@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@plugin "daisyui";
 :root {
   /* Modern neutral base + single accent (polished/minimal). */
   --background: #fcfcfd;

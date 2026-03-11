@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
+import { CollapsibleSection } from "@/components/CollapsibleSection";
 import { Footer } from "@/components/Footer";
 import { RuleList } from "@/components/RuleList";
 import { Section } from "@/components/Section";
@@ -13,7 +14,7 @@ export default function Home() {
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="flex items-baseline justify-between gap-4">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--foreground-muted)]">
-                Max Pugh
+                maxpugh<span className="text-secondary">.dev</span>
               </p>
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
                 Platform engineering · AI integrations
@@ -161,7 +162,9 @@ export default function Home() {
           </div>
         </Section>
 
-        <Section id="work" eyebrow="Recent work" title="Gift With Bear LLC" description="Full service AI gifting platform for medium to large businesses">
+              
+
+        <CollapsibleSection id="work" eyebrow="Recent work" title="As a founder" defaultOpen={true}>
           <CaseStudyCard
             title="Gift With Bear - Gifting Platform"
             role="Founding Engineer / CTO "
@@ -205,44 +208,56 @@ export default function Home() {
             imageAlt="Gift With Bear preview"
           />
 
-          <div className="mt-6">
-            <CaseStudyCard
-              title="Gifting Concierge (ChatGPT App / MCP)"
-              role="Platform + integrations (MCP server, widget, backend handoff)"
-              metrics="Designed and shipped a ChatGPT App integration that drives a real checkout flow: roster ingestion → budget → recommendations → draft creation → handoff to web checkout."
-              bullets={[]}
-              imageSrc="/bearGPT.png"
-              highlights={[
-                {
-                  title: "MCP server",
-                  detail:
-                    "Implemented an MCP tool surface (Streamable HTTP) with a stateless session model and clear tool contracts.",
-                },
-                {
-                  title: "Interactive widget UI",
-                  detail:
-                    "Served a bundled Apps SDK widget (`ui://widget/...`) to guide CSV upload and stepwise flow inside ChatGPT.",
-                },
-                {
-                  title: "Backend handoff",
-                  detail:
-                    "Draft persistence + checkout URL generation via Firebase Functions so payment + fulfillment happen on the web platform.",
-                },
-                {
-                  title: "Recommendations preview",
-                  detail:
-                    "Wired an in-chat recommendations preview that calls the backend and falls back to safe mocks when needed.",
-                },
-                {
-                  title: "App verification",
-                  detail:
-                    "Added OpenAI domain verification endpoint (`/.well-known/openai-apps-challenge`) to support app submission.",
-                },
-              ]}
-              href={LINKS.giftWithBear}
-            />
-          </div>
-        </Section>
+          <CaseStudyCard
+            title="Gifting Concierge (ChatGPT App / MCP)"
+            role="Founder / CTO"
+            metrics="Designed and shipped a ChatGPT App integration that drives a real checkout flow: roster ingestion → budget → recommendations → draft creation → handoff to web checkout."
+            bullets={[]}
+            imageSrc="/bearGPT.png"
+            highlights={[
+              {
+                title: "MCP server",
+                detail:
+                  "Implemented an MCP tool surface (Streamable HTTP) with a stateless session model and clear tool contracts.",
+              },
+              {
+                title: "Interactive widget UI",
+                detail:
+                  "Served a bundled Apps SDK widget (`ui://widget/...`) to guide CSV upload and stepwise flow inside ChatGPT.",
+              },
+              {
+                title: "Backend handoff",
+                detail:
+                  "Draft persistence + checkout URL generation via Firebase Functions so payment + fulfillment happen on the web platform.",
+              },
+              {
+                title: "Recommendations preview",
+                detail:
+                  "Wired an in-chat recommendations preview that calls the backend and falls back to safe mocks when needed.",
+              },
+              {
+                title: "App verification",
+                detail:
+                  "Added OpenAI domain verification endpoint (`/.well-known/openai-apps-challenge`) to support app submission.",
+              },
+            ]}
+            href={LINKS.giftWithBear}
+          />
+        </CollapsibleSection>
+        
+        <CollapsibleSection id="consulting"  title="As a consultant" defaultOpen={true}>
+          <CaseStudyCard
+            title="Travis - Travel companion platform"
+            role="GTM Engineer / Tech Lead "
+            metrics="Redesigned and shipped the core travel companion platform: Postgres backend managed by Supabase, OpenAI API integrations, and google calendar sync."
+            bullets={[]}
+            highlights={[]}
+            href={LINKS.travis}
+            imageSrc="/travisFrame.webp"
+            imageAlt="Travis preview"
+          />
+
+        </CollapsibleSection>
 
         <Section id="engagements" eyebrow="Availability" title="Ways to work together">
           <div className="grid gap-4">
@@ -282,7 +297,7 @@ export default function Home() {
                 I can do that too—written feedback first.
               </p>
               <div className="mt-5">
-                <Button href={LINKS.email} variant="secondary">
+                <Button href={LINKS.asyncReview} variant="secondary">
                   Ask about async review
                 </Button>
               </div>

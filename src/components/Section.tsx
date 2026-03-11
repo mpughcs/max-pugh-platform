@@ -18,7 +18,7 @@ export function Section({
       id={id}
       className="border-t border-[var(--border)] py-12 md:py-16 scroll-mt-24"
     >
-      <div className="grid gap-6 md:grid-cols-12">
+      <div className="grid gap-6 lg:grid-cols-12">
         <div className="md:col-span-4">
           {eyebrow ? (
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">

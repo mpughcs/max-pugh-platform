@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/Button";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { CollapsibleSection } from "@/components/CollapsibleSection";
@@ -5,8 +6,16 @@ import { Footer } from "@/components/Footer";
 import { RuleList } from "@/components/RuleList";
 import { Section } from "@/components/Section";
 import { LINKS } from "@/lib/links";
+import { useState } from "react";
+
+
 
 export default function Home() {
+  const [tabToShow, setTabToShow] = useState<"founder" | "consulting">("founder");
+  const handleTabClick = (key: string) => {
+    setTabToShow(key as "founder" | "consulting");
+  };
+
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-md">
@@ -162,14 +171,15 @@ export default function Home() {
           </div>
         </Section>
 
-              
 
-        <CollapsibleSection id="work" eyebrow="Recent work" title="As a founder" defaultOpen={true}>
+
+        <CollapsibleSection id="work" eyebrow="Recent work" title="As a founder" sectionKey="founder" isOpen={tabToShow === "founder"} onTabClick={handleTabClick}>
           <CaseStudyCard
             title="Gift With Bear - Gifting Platform"
             role="Founding Engineer / CTO "
             metrics="Built and operated the core gifting platform: Firebase Functions/Firestore backend, Stripe payments + webhooks, Goody fulfillment + catalog refresh, and a Cloud Run recommendation API."
             bullets={[]}
+
             highlights={[
               {
                 title: "Platform backend",
@@ -244,8 +254,8 @@ export default function Home() {
             href={LINKS.giftWithBear}
           />
         </CollapsibleSection>
-        
-        <CollapsibleSection id="consulting"  title="As a consultant" defaultOpen={true}>
+
+        <CollapsibleSection id="consulting" title="As a consultant" sectionKey="consulting" isOpen={tabToShow === "consulting"} onTabClick={handleTabClick}>
           <CaseStudyCard
             title="Travis - Travel companion platform"
             role="GTM Engineer / Tech Lead "

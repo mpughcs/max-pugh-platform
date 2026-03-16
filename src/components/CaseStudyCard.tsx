@@ -28,11 +28,11 @@ export function CaseStudyCard({
 }) {
   return (
     <div
-      className={`flex h-full min-h-0 flex-col rounded-2xl border border-[var(--border)] bg-white/70 p-6 shadow-sm backdrop-blur-sm max-w-xl ${className ?? ""}`}
+      className={`flex h-full min-h-0 flex-col rounded-2xl border border-[var(--border)] bg-white/70 p-4 md:p-6 shadow-sm backdrop-blur-sm max-w-md md:max-w-xl ${className ?? ""}`}
     >
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between shrink-0">
         <div>
-          <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
+          <h3 className="text-lg md:text-xl font-semibold tracking-tight text-[var(--foreground)]"> 
             {title}
           </h3>
           <p className="mt-1 text-[var(--foreground-muted)]">{role}</p>
@@ -65,7 +65,7 @@ export function CaseStudyCard({
         </div>
       ) : null}
 
-      <p className="mt-5 shrink-0 border-l-4 border-[var(--accent)]/50 pl-4 font-mono text-sm text-[var(--foreground-muted)]">
+      <p className="mt-5 text-xs md:text-sm shrink-0 border-l-4 border-[var(--accent)]/50 pl-4 font-mono text-[var(--foreground-muted)]">
         {metrics}
       </p>
 
@@ -82,18 +82,18 @@ export function CaseStudyCard({
           />
 
           <div
-            className="flex h-full snap-x snap-mandatory gap-3 overflow-x-auto pb-2 pr-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex h-full snap-x snap-mandatory gap-3 overflow-x-auto pb-2 pr-6 md:pb-2 md:pr-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             aria-label={`${title} responsibilities`}
           >
             {highlights.map((h) => (
               <div
                 key={h.title}
-                className="w-[260px] shrink-0 snap-start rounded-xl border border-[var(--border)] bg-white/60 p-4 shadow-sm backdrop-blur-sm h-36"
+                className="w-[260px] shrink-0 snap-start rounded-xl border border-[var(--border)] bg-white/60 p-2 md:p-4 shadow-sm backdrop-blur-sm h-36"
               >
-                <p className="text-sm font-semibold tracking-tight text-[var(--foreground)]">
+                <p className="text-xs md:text-sm font-semibold tracking-tight text-[var(--foreground)]">
                   {h.title}
                 </p>
-                <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                <p className="mt-2 text-xs md:text-sm leading-6 text-[var(--foreground-muted)]">
                   {h.detail}
                 </p>
               </div>
@@ -109,7 +109,7 @@ export function CaseStudyCard({
                   className="mt-2 h-1.5px w-1.5 shrink-0 rounded-full bg-[var(--accent)]/80"
                   aria-hidden="true"
                 />
-                <p className="text-sm leading-7 text-[var(--foreground)]">{b}</p>
+                <p className="text-xs md:text-sm leading-7 text-[var(--foreground)]">{b}</p>
               </li>
             ))}
           </ul>

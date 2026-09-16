@@ -28,17 +28,23 @@ export function CaseStudyCard({
 }) {
   return (
     <div
-      className={`flex h-full min-h-0 flex-col rounded-2xl border border-[var(--border)] bg-white/70 p-4 md:p-6 shadow-sm backdrop-blur-sm max-w-md md:max-w-xl ${className ?? ""}`}
+      className={`flex h-full min-h-0 w-full flex-col rounded-2xl border border-[var(--border)] bg-white/70 p-4 shadow-sm backdrop-blur-sm sm:p-5 md:max-w-xl md:p-6 ${className ?? ""}`}
     >
-      <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between shrink-0">
-        <div>
-          <h3 className="text-lg md:text-xl font-semibold tracking-tight text-[var(--foreground)]"> 
+      <div className="flex shrink-0 flex-col gap-4 md:flex-row md:items-start md:justify-between">
+        <div className="min-w-0">
+          <h3 className="text-lg font-semibold tracking-tight text-[var(--foreground)] md:text-xl">
             {title}
           </h3>
-          <p className="mt-1 text-[var(--foreground-muted)]">{role}</p>
+          <p className="mt-1 text-sm text-[var(--foreground-muted)] md:text-base">{role}</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <Button href={href} variant="primary" target="_blank" rel="noreferrer">
+          <Button
+            href={href}
+            variant="primary"
+            target="_blank"
+            rel="noreferrer"
+            className="min-h-11 flex-1 sm:flex-none"
+          >
             Visit
           </Button>
           {secondaryHref ? (
@@ -47,6 +53,7 @@ export function CaseStudyCard({
               variant="secondary"
               target="_blank"
               rel="noreferrer"
+              className="min-h-11 flex-1 sm:flex-none"
             >
               App Store
             </Button>
@@ -55,61 +62,79 @@ export function CaseStudyCard({
       </div>
 
       {imageSrc ? (
-        <div className="mt-5 shrink-0 overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background-alt)]">
+        <div className="mt-4 shrink-0 overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--background-alt)] sm:mt-5">
           <img
             src={imageSrc}
             alt={imageAlt ?? `${title} preview`}
-            className="h-64 w-full object-cover"
+            className="h-44 w-full object-cover sm:h-56 md:h-64"
             loading="lazy"
           />
         </div>
       ) : null}
 
-      <p className="mt-5 text-xs md:text-sm shrink-0 border-l-4 border-[var(--accent)]/50 pl-4 font-mono text-[var(--foreground-muted)]">
+      <p className="mt-4 shrink-0 border-l-4 border-[var(--accent)]/50 pl-3 font-mono text-xs text-[var(--foreground-muted)] sm:mt-5 sm:pl-4 md:text-sm">
         {metrics}
       </p>
 
       {highlights?.length ? (
-        <div className="relative mt-6 min-h-0 flex-1">
-          {/* Subtle edge fades for "scroll" affordance */}
-          <div
-            className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white/70 to-transparent"
-            aria-hidden="true"
-          />
-          <div
-            className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white/70 to-transparent"
-            aria-hidden="true"
-          />
-
-          <div
-            className="flex h-full snap-x snap-mandatory gap-3 overflow-x-auto pb-2 pr-6 md:pb-2 md:pr-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            aria-label={`${title} responsibilities`}
-          >
+        <div className="relative mt-5 min-h-0 flex-1 sm:mt-6">
+          {/* Mobile: compact 2-col grid. Desktop: horizontal snap row */}
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:hidden">
             {highlights.map((h) => (
               <div
                 key={h.title}
-                className="w-[260px] shrink-0 snap-start rounded-xl border border-[var(--border)] bg-white/60 p-2 md:p-4 shadow-sm backdrop-blur-sm h-36"
+                className="rounded-xl border border-[var(--border)] bg-white/60 p-3 shadow-sm backdrop-blur-sm"
               >
-                <p className="text-xs md:text-sm font-semibold tracking-tight text-[var(--foreground)]">
+                <p className="text-sm font-semibold tracking-tight text-[var(--foreground)]">
                   {h.title}
                 </p>
-                <p className="mt-2 text-xs md:text-sm leading-6 text-[var(--foreground-muted)]">
+                <p className="mt-1.5 text-xs leading-5 text-[var(--foreground-muted)]">
                   {h.detail}
                 </p>
               </div>
             ))}
           </div>
+
+          <div className="relative hidden md:block">
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white/70 to-transparent"
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white/70 to-transparent"
+              aria-hidden="true"
+            />
+
+            <div
+              className="flex h-full snap-x snap-mandatory gap-3 overflow-x-auto pb-2 pr-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              aria-label={`${title} responsibilities`}
+            >
+              {highlights.map((h) => (
+                <div
+                  key={h.title}
+                  className="h-36 w-[260px] shrink-0 snap-start rounded-xl border border-[var(--border)] bg-white/60 p-4 shadow-sm backdrop-blur-sm"
+                >
+                  <p className="text-sm font-semibold tracking-tight text-[var(--foreground)]">
+                    {h.title}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-[var(--foreground-muted)]">
+                    {h.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       ) : (
-        <div className="mt-6 min-h-0 flex-1">
+        <div className="mt-5 min-h-0 flex-1 sm:mt-6">
           <ul className="space-y-3">
             {bullets.map((b) => (
               <li key={b} className="flex gap-3">
                 <span
-                  className="mt-2 h-1.5px w-1.5 shrink-0 rounded-full bg-[var(--accent)]/80"
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]/80"
                   aria-hidden="true"
                 />
-                <p className="text-xs md:text-sm leading-7 text-[var(--foreground)]">{b}</p>
+                <p className="text-xs leading-7 text-[var(--foreground)] md:text-sm">{b}</p>
               </li>
             ))}
           </ul>
@@ -118,4 +143,3 @@ export function CaseStudyCard({
     </div>
   );
 }
-

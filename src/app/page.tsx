@@ -19,17 +19,17 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <header className="sticky top-0 z-10 border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-md">
-        <div className="mx-auto max-w-5xl px-5 py-4 md:px-8">
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-baseline justify-between gap-4">
+        <div className="mx-auto max-w-5xl px-4 py-3 sm:px-5 sm:py-4 md:px-8">
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--foreground-muted)]">
                 maxpugh<span className="text-secondary">.dev</span>
               </p>
-              <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
+              <p className="mt-0.5 truncate font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--accent)] sm:text-xs sm:tracking-[0.2em]">
                 Platform engineering · AI integrations
               </p>
             </div>
-            <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-[var(--foreground-muted)]">
+            <nav className="flex shrink-0 gap-x-4 text-sm text-[var(--foreground-muted)] sm:gap-x-5">
               <a className="hover:text-[var(--foreground)] hover:underline" href="#about">
                 About
               </a>
@@ -44,50 +44,55 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-5 py-14 md:px-8 md:py-20">
-        <section className="grid gap-10 rounded-2xl border border-[var(--border)] bg-white/70 p-6 shadow-sm backdrop-blur-sm md:p-10">
-          <div className="grid gap-6">
+      <main className="mx-auto max-w-5xl px-4 py-10 sm:px-5 sm:py-14 md:px-8 md:py-20">
+        <section className="grid gap-8 rounded-2xl border border-[var(--border)] bg-white/70 p-5 shadow-sm backdrop-blur-sm sm:gap-10 sm:p-6 md:p-10">
+          <div className="grid gap-5 sm:gap-6">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
               Platform engineering
             </p>
-            <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-[var(--foreground)] md:text-5xl md:leading-tight">
+            <h1 className="text-[2rem] font-bold leading-[1.15] tracking-tight text-[var(--foreground)] sm:text-4xl sm:leading-[1.1] md:text-5xl md:leading-tight">
               I build reliable platforms that let teams ship{" "}
               <span className="text-[var(--accent)]">AI features</span>{" "}
               without fragility.
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-[var(--foreground-muted)]">
+            <p className="max-w-2xl text-base leading-7 text-[var(--foreground-muted)] sm:text-lg sm:leading-8">
               My focus is platform engineering: backend boundaries, integrations, data flows,
               and operational guardrails. Practically, that means turning “we should add AI”
               into production-ready systems (tooling, safety, observability, fallbacks) that teams can maintain.
             </p>
           </div>
 
-          <div className="flex flex-col gap-4 md:flex-row md:items-center">
-            <Button href={LINKS.calendlyAdvisory} target="_blank" rel="noreferrer">
+          <div className="flex flex-col gap-3 sm:gap-4 md:flex-row md:items-center">
+            <Button
+              href={LINKS.calendlyAdvisory}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full md:w-auto"
+            >
               Schedule a call
             </Button>
-            <Button href={LINKS.email} variant="secondary">
+            <Button href={LINKS.email} variant="secondary" className="w-full md:w-auto">
               Email me
             </Button>
-            <p className="md:ml-auto font-mono text-xs uppercase tracking-[0.2em] text-[var(--foreground-muted)]">
+            <p className="text-center font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--foreground-muted)] sm:text-xs sm:tracking-[0.2em] md:ml-auto md:text-left">
               Remote-friendly · async-first · clear written deliverables.
             </p>
           </div>
         </section>
 
         <Section id="about" eyebrow="Background" title="About">
-          <div className="relative overflow-hidden rounded-xl border border-[var(--border)] bg-white/70 p-6 shadow-sm backdrop-blur-sm md:p-8">
+          <div className="relative overflow-hidden rounded-xl border border-[var(--border)] bg-white/70 p-5 shadow-sm backdrop-blur-sm sm:p-6 md:p-8">
             {/* Subtle accent wash to keep the section feeling “alive” */}
             <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[var(--accent-soft)] opacity-60 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-[var(--background-alt)] opacity-70 blur-3xl" />
 
-            <div className="relative flex flex-col gap-8 sm:flex-row sm:items-start md:gap-10">
+            <div className="relative flex flex-col items-center gap-6 text-center sm:flex-row sm:items-start sm:gap-8 sm:text-left md:gap-10">
               <div className="shrink-0">
                 <div className="rounded-full bg-gradient-to-br from-[var(--accent)]/25 to-transparent p-1">
                   <img
                     src="/avatar.png"
                     alt="Max Pugh"
-                    className="h-40 w-40 rounded-full object-cover ring-1 ring-[var(--border)] sm:h-48 sm:w-48"
+                    className="h-28 w-28 rounded-full object-cover ring-1 ring-[var(--border)] sm:h-40 sm:w-40 md:h-48 md:w-48"
                   />
                 </div>
               </div>
@@ -104,7 +109,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-6 flex flex-wrap justify-center gap-2 sm:justify-start">
                   {[
                     "Platform engineering",
                     "AI integrations",
@@ -284,15 +289,16 @@ export default function Home() {
                 I’m looking for a remote role where I can own platform + integration work: backend services, vendor APIs, background jobs,
                 AI feature delivery, and operational guardrails.
               </p>
-              <div className="mt-5">
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-start">
                 <Button
                   href={LINKS.calendlyAdvisory}
                   target="_blank"
                   rel="noreferrer"
+                  className="w-full sm:w-auto"
                 >
                   Set up a conversation
                 </Button>
-                <p className="mt-3 text-xs text-[var(--foreground-muted)]">
+                <p className="text-xs text-[var(--foreground-muted)] sm:pt-2.5">
                   I’m happy to share a resume and walk through case studies.
                 </p>
               </div>
@@ -307,7 +313,7 @@ export default function Home() {
                 I can do that too—written feedback first.
               </p>
               <div className="mt-5">
-                <Button href={LINKS.asyncReview} variant="secondary">
+                <Button href={LINKS.asyncReview} variant="secondary" className="w-full sm:w-auto">
                   Ask about async review
                 </Button>
               </div>
@@ -330,7 +336,7 @@ export default function Home() {
               I’m happy to provide referrals or connect you with people I’ve worked with. If you’re considering me for a role or engagement and would like references, please reach out and I’ll arrange an introduction.
             </p>
             <div className="mt-5">
-              <Button href={LINKS.email} variant="secondary">
+              <Button href={LINKS.email} variant="secondary" className="w-full sm:w-auto">
                 Request referrals
               </Button>
             </div>

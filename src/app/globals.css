@@ -24,13 +24,21 @@
 html,
 body {
   height: 100%;
+  overflow-x: clip;
 }
 
 body {
-  background: radial-gradient(1200px 600px at 20% -10%, var(--accent-soft), transparent 55%),
+  background: radial-gradient(900px 480px at 20% -10%, var(--accent-soft), transparent 55%),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (min-width: 768px) {
+  body {
+    background: radial-gradient(1200px 600px at 20% -10%, var(--accent-soft), transparent 55%),
+      var(--background);
+  }
 }
 
 ::selection {

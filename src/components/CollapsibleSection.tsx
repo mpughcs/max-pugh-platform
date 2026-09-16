@@ -48,26 +48,26 @@ export function CollapsibleSection({
     <section
       ref={sectionRef}
       id={id}
-      className="border-t border-[var(--border)] py-8 md:py-10 scroll-mt-24"
+      className="scroll-mt-20 border-t border-[var(--border)] py-6 sm:py-8 md:scroll-mt-24 md:py-10"
     >
       <button
         type="button"
         onClick={handleClick}
-        className="flex w-full cursor-pointer items-start justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] rounded-lg"
+        className="flex w-full cursor-pointer items-start justify-between gap-3 rounded-lg text-left touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)] sm:gap-4"
         aria-expanded={expanded}
       >
-        <div>
+        <div className="min-w-0">
           {eyebrow ? (
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
               {eyebrow}
             </p>
           ) : null}
-          <h2 className="mt-2 text-2xl font-bold tracking-tight text-[var(--foreground)] md:text-3xl">
+          <h2 className="mt-2 text-xl font-bold tracking-tight text-[var(--foreground)] sm:text-2xl md:text-3xl">
             {title}
           </h2>
         </div>
         <span
-          className="shrink-0 pt-2 text-[var(--foreground-muted)] transition-transform "
+          className="shrink-0 pt-1 text-[var(--foreground-muted)] transition-transform sm:pt-2"
           aria-hidden
           style={{ transform: expanded ? "rotate(180deg)" : "rotate(0deg)" }}
         >
@@ -78,8 +78,8 @@ export function CollapsibleSection({
       </button>
 
       {expanded ? (
-        <div className="mt-6 -mx-5 overflow-x-auto px-5 md:-mx-8 md:px-8">
-          <div className="flex flex-row items-stretch gap-6 pr-4 [&>*]:shrink-0">
+        <div className="mt-5 sm:mt-6 md:-mx-8 md:overflow-x-auto md:px-8">
+          <div className="flex flex-col gap-5 sm:gap-6 md:flex-row md:items-stretch md:pr-4 md:[&>*]:shrink-0">
             {children}
           </div>
         </div>
